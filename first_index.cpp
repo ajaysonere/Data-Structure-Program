@@ -11,15 +11,17 @@
 using namespace std;
 int first_index(int arr[],int n,int x)
 {
-   static int i=0;
    if(n==0)
    {
-     return 0;
+     return -1;
    }
-   if(x==arr[i])
-      return i;
-    i++;
-   return first_index(arr,n-1,x);
+   if(x==arr[0])
+      return 0;
+   int smalloutput =  first_index(arr+1,n-1,x);
+   if (smalloutput != -1)
+        return smalloutput+1;
+   else
+     return -1;
 }
 
 int main()
