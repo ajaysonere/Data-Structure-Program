@@ -1,44 +1,34 @@
-#include<iostream>
-#include<vector>
+#include<bits/stdc++.h>
 using namespace std;
-void reverse_array_n(int s,int e, vector<int> &arr)
+void reverseArray(int arr[],int size)
 {
-  if(s>=e)
-     return;
-  swap(arr[s],arr[e]);
-  reverse_array_n(s+1,e-1,arr);
-  
+    int low =0;
+    int high =size-1;
+    while(low<=high)
+      {
+        int temp = arr[low];
+        arr[low]=arr[high];
+        arr[high]=temp;
+        low++;
+        high--;
+     }
+      for(int i=0;i<size;i++)
+        {
+          cout<< arr[i] << " ";
+        }
+      cout << "\n";
 }
-int reverse_array(vector<int> &arr,int n,int m)
-{
-  reverse_array_n(m+1,n-1,arr);
-  for(int i=0;i<n;i++)
-  {
-     cout << arr[i] << " ";
-  }
-  cout << "\n";
-}
+
 int main ()
 {
-vector<int> arr;
-int value;
-int n;
-cout << "Enter the Size of The Array :" << "\n";
-cin >> n;
-for(int i=0;i<n;i++)
-{
-  cin >> value;
-  arr.push_back(value);
-}
-cout << "Before the reverse the array :" << "\n";
-for(int i=0;i<n;i++)
-{
-   cout << arr[i] << " ";
-}
-cout << "\n";
-int m;
-cout <<" From which element you want to reverse the elements :" << "\n";
-cin >> m;
-reverse_array(arr,n,m);
+  int size;
+  cin >> size;
+  int *arr = new int[size];
+  for(int i=0;i<size;i++)
+  {
+      cin >>arr[i];
+  }
+  reverseArray(arr,size);
+  delete []arr;
 return 0;
 }
